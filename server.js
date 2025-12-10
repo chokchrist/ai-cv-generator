@@ -149,7 +149,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // SPA Fallback: Send index.html for any other route
-app.get('*', (req, res, next) => {
+app.get(/.*/, (req, res, next) => {
   // Skip API routes
   if (req.path.startsWith('/auth') || req.path.startsWith('/cvs') || req.path.startsWith('/generate-cv') || req.path.startsWith('/create-payment-intent')) {
     return next();
