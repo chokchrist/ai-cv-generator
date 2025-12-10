@@ -3,7 +3,7 @@ const getAuthHeader = () => {
   return token ? { 'Authorization': `Bearer ${token}` } : {};
 };
 
-const API_URL = import.meta.env.PROD ? '' : 'http://localhost:4242';
+export const API_URL = import.meta.env.PROD ? '' : 'http://localhost:4242';
 
 export const createPaymentIntent = async (amount) => {
   const res = await fetch(`${API_URL}/create-payment-intent`, {
@@ -30,7 +30,7 @@ export const generateCVFromAPI = async (text, language = 'en') => {
 };
 
 export const saveCV = async (name, data) => {
-  const res = await fetch('http://localhost:4242/cvs', {
+  const res = await fetch(`${API_URL}/cvs`, {
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json',
@@ -42,14 +42,14 @@ export const saveCV = async (name, data) => {
 };
 
 export const getCVs = async () => {
-    const res = await fetch('http://localhost:4242/cvs', {
+    const res = await fetch(`${API_URL}/cvs`, {
         headers: { ...getAuthHeader() }
     });
     return await res.json();
 };
 
 export const deleteCV = async (id) => {
-    await fetch(`http://localhost:4242/cvs/${id}`, {
+    await fetch(`${API_URL}/cvs/${id}`, {
         method: 'DELETE',
         headers: { ...getAuthHeader() }
     });

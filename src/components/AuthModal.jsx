@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_URL } from '../lib/api';
 import { useGoogleLogin } from '@react-oauth/google';
 
 const AuthModal = ({ onClose }) => {
@@ -14,7 +15,7 @@ const AuthModal = ({ onClose }) => {
     setError('');
     const endpoint = isLogin ? '/auth/login' : '/auth/register';
     try {
-      const res = await fetch(`http://localhost:4242${endpoint}`, {
+      const res = await fetch(`${API_URL}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -37,7 +38,7 @@ const AuthModal = ({ onClose }) => {
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        const res = await fetch('http://localhost:4242/auth/social-login', {
+        const res = await fetch(`${API_URL}/auth/social-login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
