@@ -115,7 +115,7 @@ const Dashboard = () => {
     <div className="min-h-screen flex flex-col md:flex-row font-sans text-slate-800 bg-slate-50 transition-colors duration-300">
 
       {/* Sidebar: Glassmorphism */}
-      <aside className="w-full md:w-[400px] p-8 glass border-r-0 md:h-screen sticky top-0 overflow-y-auto z-20 flex flex-col gap-6 transition-all duration-300">
+      <aside className="w-full md:w-[400px] p-6 md:p-8 glass border-r-0 md:h-screen md:sticky md:top-0 overflow-y-auto z-20 flex flex-col gap-6 transition-all duration-300">
 
         {/* Header */}
         <header className="flex justify-between items-start">
@@ -227,7 +227,7 @@ const Dashboard = () => {
           <label className="text-sm font-semibold text-slate-700 ml-1">{t.workHistoryLabel}</label>
           <div className="relative flex-1">
             <textarea
-              className="w-full h-full min-h-[200px] input-field resize-none leading-relaxed text-sm"
+              className="w-full h-full min-h-[150px] md:min-h-[200px] input-field resize-none leading-relaxed text-sm"
               placeholder={t.placeholder}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
@@ -324,7 +324,7 @@ const Dashboard = () => {
       </aside>
 
       {/* Preview Area */}
-      <main className="flex-1 p-8 md:p-12 overflow-y-auto flex flex-col items-center justify-start min-h-screen relative">
+      <main className="flex-1 p-4 md:p-12 overflow-x-hidden overflow-y-auto flex flex-col items-center justify-start min-h-screen relative">
         {/* Background blobs */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-pulse"></div>
@@ -332,18 +332,18 @@ const Dashboard = () => {
         </div>
 
         {generatedData ? (
-          <div className="w-full max-w-[8.5in] animate-in fade-in zoom-in-95 duration-700">
-            <div className="flex justify-between items-center mb-8 sticky top-0 z-10 py-4 glass px-6 rounded-2xl mx-auto w-fit md:w-full">
-              <h2 className="text-lg font-bold text-slate-700 flex items-center gap-2">
+          <div className="w-full max-w-[8.5in] animate-in fade-in zoom-in-95 duration-700 mx-auto">
+            <div className="flex justify-between items-center mb-8 sticky top-4 z-10 py-3 glass px-4 md:px-6 rounded-2xl w-full">
+              <h2 className="text-sm md:text-lg font-bold text-slate-700 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                 {t.livePreview}
               </h2>
-              <div className="flex gap-3">
+              <div className="flex gap-2 md:gap-3">
                 <button
                   onClick={handleDownloadClick}
-                  className="bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                  className="bg-slate-900 text-white px-3 py-2 md:px-5 md:py-2.5 rounded-xl text-sm md:text-base font-bold shadow-lg shadow-slate-900/20 hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 md:w-5 md:h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                   </svg>
                   {t.downloadBtn}
@@ -351,13 +351,15 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Paper Effect */}
-            <div id="cv-content" className="bg-white shadow-2xl shadow-slate-300/50 mb-20 origin-top transform transition-transform duration-500 print:shadow-none" style={{ minHeight: '11in' }}>
-              {selectedTemplate === 'modern' ? (
-                <ModernTemplate data={generatedData} labels={t} />
-              ) : (
-                <CreativeTemplate data={generatedData} photo={userPhoto} labels={t} />
-              )}
+            {/* Paper Effect with Mobile Scaling */}
+            <div className="pb-8 md:pb-0 md:overflow-visible flex justify-center w-full">
+              <div id="cv-content" className="bg-white shadow-2xl shadow-slate-300/50 mb-20 origin-top transform transition-transform duration-500 print:shadow-none min-w-[800px] md:min-w-0 md:transform-none scale-[0.38] xs:scale-[0.45] sm:scale-[0.6] md:scale-100 h-[11in] md:h-auto" style={{ minHeight: '11in' }}>
+                {selectedTemplate === 'modern' ? (
+                  <ModernTemplate data={generatedData} labels={t} />
+                ) : (
+                  <CreativeTemplate data={generatedData} photo={userPhoto} labels={t} />
+                )}
+              </div>
             </div>
           </div>
         ) : (
