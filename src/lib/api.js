@@ -17,6 +17,24 @@ export const createPaymentIntent = async (amount) => {
   return await res.json();
 };
 
+export const rewriteContent = async (text, language = 'en') => {
+  const res = await fetch(`${API_URL}/rewrite-content`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text, language }),
+  });
+  return await res.json();
+};
+
+export const suggestSkills = async (jobTitle, language = 'en') => {
+  const res = await fetch(`${API_URL}/suggest-skills`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ jobTitle, language }),
+  });
+  return await res.json();
+};
+
 export const generateCVFromAPI = async (text, language = 'en') => {
   const res = await fetch(`${API_URL}/generate-cv`, {
     method: 'POST',
@@ -53,4 +71,17 @@ export const deleteCV = async (id) => {
         method: 'DELETE',
         headers: { ...getAuthHeader() }
     });
+};
+
+export const publishCV = async (id) => {
+    const res = await fetch(`${API_URL}/cvs/${id}/publish`, {
+        method: 'POST',
+        headers: { ...getAuthHeader() }
+    });
+    return await res.json();
+};
+
+export const getPublicCV = async (token) => {
+    const res = await fetch(`${API_URL}/api/public/cv/${token}`);
+    return await res.json();
 };
