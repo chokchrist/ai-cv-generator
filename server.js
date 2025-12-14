@@ -44,6 +44,7 @@ db.exec(`
     userId INTEGER NOT NULL,
     name TEXT NOT NULL,
     data TEXT NOT NULL,
+    publicToken TEXT, 
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (userId) REFERENCES users (id)
   );
@@ -142,6 +143,23 @@ app.delete('/cvs/:id', authenticateToken, (req, res) => {
   res.json({ message: 'Deleted' });
 });
 
+app.post('/cvs/:id/publish', authenticateToken, (req, res) => {
+    const { id } = req.params;
+    const token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const update = db.prepare('UPDATE cvs SET publicToken = ? WHERE id = ? AND userId = ?');
+    const result = update.run(token, id, req.user.id);
+    if (result.changes === 0) return res.status(404).json({ error: 'Not found' });
+    res.json({ token });
+});
+
+app.get('/api/public/cv/:token', (req, res) => {
+    const { token } = req.params;
+    const cv = db.prepare('SELECT * FROM cvs WHERE publicToken = ?').get(token);
+    if (!cv) return res.status(404).json({ error: 'CV not found' });
+    const data = JSON.parse(cv.data);
+    res.json({ ...cv, data });
+});
+
 // --- Serve Static Files (Production) ---
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -210,6 +228,53 @@ app.post('/generate-cv', async (req, res) => {
     res.json(cvData);
   } catch (error) {
     console.error("Gemini Error:", error);
+    res.status(500).send({ error: error.message });
+  }
+});
+
+app.post('/rewrite-content', async (req, res) => {
+  try {
+    const { text, language = 'en' } = req.body;
+    let langInstruction = language === 'en' ? "Output in English." : `Output in ${language}.`;
+    
+    const prompt = `
+    You are a professional CV editor. Rewrite the following text to be more persuasive, professional, and impact-driven. 
+    Use strong action verbs. Keep it concise.
+    ${langInstruction}
+    
+    Original Text: "${text}"
+    
+    Return strict JSON: { "rewritten": "..." }
+    `;
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const json = JSON.parse(response.text());
+    res.json(json);
+  } catch (error) {
+    console.error("Rewrite Error:", error);
+    res.status(500).send({ error: error.message });
+  }
+});
+
+app.post('/suggest-skills', async (req, res) => {
+  try {
+    const { jobTitle, language = 'en' } = req.body;
+    let langInstruction = language === 'en' ? "Output in English." : `Output in ${language}.`;
+
+    const prompt = `
+    Suggest 10 relevant technical and soft skills for the job title: "${jobTitle}".
+    ${langInstruction}
+    
+    Return strict JSON: { "skills": ["Skill 1", "Skill 2", ...] }
+    `;
+
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const json = JSON.parse(response.text());
+    res.json(json);
+  } catch (error) {
+    console.error("Skills Error:", error);
     res.status(500).send({ error: error.message });
   }
 });
