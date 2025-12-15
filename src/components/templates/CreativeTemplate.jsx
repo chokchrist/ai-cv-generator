@@ -40,6 +40,21 @@ const CreativeTemplate = ({ data, photo, labels }) => {
               ))}
             </div>
           </div>
+
+          {/* Languages */}
+          {data.languages && data.languages.length > 0 && (
+            <div>
+              <h3 className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-4">{labels?.sectionLanguages || 'Languages'}</h3>
+              <ul className="space-y-2 text-sm text-slate-300">
+                {data.languages.map((l, i) => (
+                  <li key={i} className="flex justify-between border-b border-slate-800 pb-1 last:border-0">
+                    <span>{l.language}</span>
+                    <span className="text-indigo-400 text-xs">{l.level}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </aside>
 

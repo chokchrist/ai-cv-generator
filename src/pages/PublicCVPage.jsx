@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPublicCV } from '../lib/api';
 import ModernTemplate from '../components/templates/ModernTemplate';
+import ClassicTemplate from '../components/templates/ClassicTemplate';
+import TechnicalTemplate from '../components/templates/TechnicalTemplate';
+import CreativeTemplate from '../components/templates/CreativeTemplate';
+import ExecutiveTemplate from '../components/templates/ExecutiveTemplate';
 
 const PublicCVPage = () => {
   const { token } = useParams();
@@ -34,7 +38,15 @@ const PublicCVPage = () => {
         <a href="/" className="text-indigo-600 font-bold hover:underline text-sm">Create your own</a>
       </div>
       <div className="w-[8.5in] bg-white shadow-2xl min-h-[11in]">
-        <ModernTemplate data={cv.data} labels={{}} />
+        {
+          {
+            'modern': <ModernTemplate data={cv.data} labels={{/* TODO: Pass Translations if needed, or rely on template defaults */ }} />,
+            'classic': <ClassicTemplate data={cv.data} labels={{}} />,
+            'technical': <TechnicalTemplate data={cv.data} labels={{}} />,
+            'creative': <CreativeTemplate data={cv.data} photo={null} labels={{}} />, // Photo might need to be handled if saved
+            'executive': <ExecutiveTemplate data={cv.data} labels={{}} />
+          }[cv.data.template || 'modern']
+        }
         {/* Note: Labels might be missing if we don't pass them, defaulting to English fallback inside template or empty */}
       </div>
     </div>

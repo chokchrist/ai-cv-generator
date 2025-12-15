@@ -1,12 +1,18 @@
 import { pdf } from '@react-pdf/renderer';
 import ModernPdfDocument from '../components/pdf/ModernPdfDocument';
 import CreativePdfDocument from '../components/pdf/CreativePdfDocument';
+import ClassicPdfDocument from '../components/pdf/ClassicPdfDocument';
+import TechnicalPdfDocument from '../components/pdf/TechnicalPdfDocument';
+import ExecutivePdfDocument from '../components/pdf/ExecutivePdfDocument';
 import React from 'react';
 
 // Map template names to their PDF components
 const TEMPLATES = {
   modern: ModernPdfDocument,
-  creative: CreativePdfDocument
+  creative: CreativePdfDocument,
+  classic: ClassicPdfDocument,
+  technical: TechnicalPdfDocument,
+  executive: ExecutivePdfDocument
 };
 
 export const downloadPDF = async (data, templateName = 'modern', photo = null, labels = {}) => {

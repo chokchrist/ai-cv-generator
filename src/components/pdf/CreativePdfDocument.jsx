@@ -245,6 +245,20 @@ const CreativePdfDocument = ({ data, photo, labels }) => (
             ))}
           </View>
         </View>
+
+        {data.languages && data.languages.length > 0 && (
+          <View style={styles.sidebarSection}>
+            <Text style={styles.sidebarTitle}>{labels?.sectionLanguages || 'Languages'}</Text>
+            <View>
+              {data.languages.map((l, i) => (
+                <View key={i} style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5 }}>
+                  <Text style={{ fontSize: 9, color: '#f8fafc', fontWeight: 'bold' }}>{l.language}</Text>
+                  <Text style={{ fontSize: 9, color: '#818cf8' }}>{l.level}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+        )}
       </View>
 
       {/* Main Content */}
@@ -300,7 +314,7 @@ const CreativePdfDocument = ({ data, photo, labels }) => (
       </View>
 
     </Page>
-  </Document>
+  </Document >
 );
 
 export default CreativePdfDocument;

@@ -16,7 +16,9 @@ export const CVProvider = ({ children }) => {
     },
     experience: [],
     education: [],
-    skills: ['Skill 1', 'Skill 2', 'Skill 3']
+    skills: ['Skill 1', 'Skill 2', 'Skill 3'],
+    languages: [],
+    template: 'modern'
   });
 
   const updatePersonalInfo = (info) => {
@@ -35,12 +37,20 @@ export const CVProvider = ({ children }) => {
     setCvData(prev => ({ ...prev, skills }));
   };
 
+  const updateLanguages = (languages) => {
+    setCvData(prev => ({ ...prev, languages }));
+  };
+
+  const updateTemplate = (template) => {
+    setCvData(prev => ({ ...prev, template }));
+  };
+
   const setCV = (data) => {
     setCvData(data);
   };
 
   return (
-    <CVContext.Provider value={{ cvData, updatePersonalInfo, updateExperience, updateEducation, updateSkills, setCV }}>
+    <CVContext.Provider value={{ cvData, updatePersonalInfo, updateExperience, updateEducation, updateSkills, updateLanguages, updateTemplate, setCV }}>
       {children}
     </CVContext.Provider>
   );

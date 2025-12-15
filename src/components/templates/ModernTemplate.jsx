@@ -67,6 +67,20 @@ const ModernTemplate = ({ data, labels }) => {
               ))}
             </div>
           </section>
+
+          {data.languages && data.languages.length > 0 && (
+            <section>
+              <h2 className="text-xl font-bold text-slate-900 mb-4 border-b border-slate-200 pb-2">{labels?.sectionLanguages || 'Languages'}</h2>
+              <div className="space-y-2">
+                {data.languages.map((l, index) => (
+                  <div key={index} className="flex justify-between items-center text-sm">
+                    <span className="font-bold text-slate-700">{l.language}</span>
+                    <span className="text-slate-500">{l.level}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>

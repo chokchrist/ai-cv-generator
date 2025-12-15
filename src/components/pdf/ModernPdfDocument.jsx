@@ -197,6 +197,20 @@ const ModernPdfDocument = ({ data, labels }) => (
               ))}
             </View>
           </View>
+
+          {data.languages && data.languages.length > 0 && (
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>{labels?.sectionLanguages || 'Languages'}</Text>
+              <View>
+                {data.languages.map((l, index) => (
+                  <View key={index} style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 }}>
+                    <Text style={{ ...styles.text, fontWeight: 'bold' }}>{l.language}</Text>
+                    <Text style={{ ...styles.text, color: '#64748b' }}>{l.level}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
         </View>
       </View>
     </Page>

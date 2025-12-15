@@ -18,7 +18,11 @@ export const translations = {
     emptyStateDesc: "Experience the power of premium AI. Log in to save your history, or simply paste your story to begin.",
     logout: "Logout",
     modern: "Modern",
+    classic: "Classic",
+    technical: "Technical",
+    executive: "Executive",
     creative: "Creative",
+    creativeWarning: "This template is visually impactful but may not be compatible with all ATS systems. Recommended for direct submissions.",
     sectionExperience: "Professional Experience",
     sectionEducation: "Education",
     sectionSkills: "Skills",
@@ -30,6 +34,7 @@ export const translations = {
     tabExperience: "Experience",
     tabEducation: "Education",
     tabSkills: "Skills",
+    tabLanguages: "Languages",
     tabMagic: "AI Import",
     magicTitle: "Import from Description",
     magicDesc: "Paste your existing resume, LinkedIn profile, or just type your experience. Our AI will structure it for you.",
@@ -94,7 +99,15 @@ export const translations = {
     addSkillBtn: "Add",
     jobTitleRequired: "Please enter a Job Title in Personal Details first.",
     suggestionFail: "Suggestion failed",
-    suggesting: "Suggesting..."
+    suggesting: "Suggesting...",
+
+    // Languages Form
+    languagesTitle: "Languages",
+    addLanguage: "+ Add Language",
+    languagePlaceholder: "Language (e.g. English)",
+    levelPlaceholder: "Level (e.g. Native)",
+    noLanguages: "No languages added yet.",
+    sectionLanguages: "Languages",
   },
   es: {
     appTitle: "Generador CV IA",
@@ -115,7 +128,11 @@ export const translations = {
     emptyStateDesc: "Experimenta el poder de la IA premium. Inicia sesión para guardar, o simplemente pega tu historia para comenzar.",
     logout: "Cerrar Sesión",
     modern: "Moderno",
+    classic: "Clásico",
+    technical: "Técnico",
+    executive: "Ejecutivo",
     creative: "Creativo",
+    creativeWarning: "Esta plantilla es visualmente impactante, pero puede no ser compatible con todos los sistemas ATS. Recomendada para envíos directos.",
     sectionExperience: "Experiencia Profesional",
     sectionEducation: "Educación",
     sectionSkills: "Habilidades",
@@ -127,6 +144,7 @@ export const translations = {
     tabExperience: "Experiencia",
     tabEducation: "Educación",
     tabSkills: "Habilidades",
+    tabLanguages: "Idiomas",
     tabMagic: "Importar IA",
     magicTitle: "Importar de Descripción",
     magicDesc: "Pega tu CV existente, perfil de LinkedIn o escribe tu experiencia. Nuestra IA lo estructurará por ti.",
@@ -191,7 +209,15 @@ export const translations = {
     addSkillBtn: "Agregar",
     jobTitleRequired: "Por favor ingresa un Título Profesional en Detalles Personales primero.",
     suggestionFail: "Falló la sugerencia",
-    suggesting: "Sugiriendo..."
+    suggesting: "Sugiriendo...",
+
+    // Languages Form
+    languagesTitle: "Idiomas",
+    addLanguage: "+ Agregar Idioma",
+    languagePlaceholder: "Idioma (ej. Inglés)",
+    levelPlaceholder: "Nivel (ej. Nativo)",
+    noLanguages: "No se han agregado idiomas aún.",
+    sectionLanguages: "Idiomas",
   },
   fr: {
     appTitle: "Générateur CV IA",
@@ -212,7 +238,11 @@ export const translations = {
     emptyStateDesc: "Découvrez la puissance de l'IA. Connectez-vous pour sauvegarder, ou collez simplement votre histoire.",
     logout: "Déconnexion",
     modern: "Moderne",
+    classic: "Classique",
+    technical: "Technique",
+    executive: "Exécutif",
     creative: "Créatif",
+    creativeWarning: "Ce modèle est visuellement impactant mais peut ne pas être compatible avec tous les ATS. Recommandé pour les envois directs.",
     sectionExperience: "Expérience Professionnelle",
     sectionEducation: "Éducation",
     sectionSkills: "Compétences",
@@ -224,6 +254,7 @@ export const translations = {
     tabExperience: "Expérience",
     tabEducation: "Éducation",
     tabSkills: "Compétences",
+    tabLanguages: "Langues",
     tabMagic: "Import IA",
     magicTitle: "Importer une description",
     magicDesc: "Collez votre CV existant, profil LinkedIn ou écrivez votre expérience. Notre IA l'organisera.",
@@ -288,7 +319,15 @@ export const translations = {
     addSkillBtn: "Ajouter",
     jobTitleRequired: "Veuillez d'abord entrer un titre de poste.",
     suggestionFail: "Échec de la suggestion",
-    suggesting: "Suggestion..."
+    suggesting: "Suggestion...",
+
+    // Languages Form
+    languagesTitle: "Langues",
+    addLanguage: "+ Ajouter Langue",
+    languagePlaceholder: "Langue (ex. Anglais)",
+    levelPlaceholder: "Niveau (ex. Natif)",
+    noLanguages: "Aucune langue ajoutée.",
+    sectionLanguages: "Langues",
   },
   de: {
     appTitle: "KI Lebenslauf",
@@ -309,7 +348,11 @@ export const translations = {
     emptyStateDesc: "Erleben Sie Premium-KI. Melden Sie sich an, um zu speichern, oder fügen Sie Ihre Geschichte ein.",
     logout: "Abmelden",
     modern: "Modern",
+    classic: "Klassisch",
+    technical: "Technisch",
+    executive: "Führungskraft",
     creative: "Kreativ",
+    creativeWarning: "Diese Vorlage ist visuell beeindruckend, aber möglicherweise nicht mit allen ATS-Systemen kompatibel.",
     sectionExperience: "Berufserfahrung",
     sectionEducation: "Ausbildung",
     sectionSkills: "Fähigkeiten",
@@ -321,6 +364,7 @@ export const translations = {
     tabExperience: "Erfahrung",
     tabEducation: "Ausbildung",
     tabSkills: "Skills",
+    tabLanguages: "Sprachen",
     tabMagic: "KI Import",
     magicTitle: "Aus Beschreibung importieren",
     magicDesc: "Fügen Sie Ihren Lebenslauf oder LinkedIn-Profil ein. Unsere KI strukturiert es für Sie.",
@@ -385,6 +429,14 @@ export const translations = {
     addSkillBtn: "Hinzufügen",
     jobTitleRequired: "Bitte geben Sie zuerst eine Berufsbezeichnung ein.",
     suggestionFail: "Vorschlag fehlgeschlagen",
-    suggesting: "Vorschlagen..."
+    suggesting: "Vorschlagen...",
+
+    // Languages Form
+    languagesTitle: "Sprachen",
+    addLanguage: "+ Sprache",
+    languagePlaceholder: "Sprache (z.B. Englisch)",
+    levelPlaceholder: "Niveau (z.B. Muttersprache)",
+    noLanguages: "Noch keine Sprachen hinzugefügt.",
+    sectionLanguages: "Sprachen",
   }
 };
