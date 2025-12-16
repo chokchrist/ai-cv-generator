@@ -136,7 +136,7 @@ const LoginPage = () => {
           </div>
         </form>
       </div>
-      <p className="mt-8 text-xs text-slate-400">© 2024 AI CV Generator. All rights reserved.</p>
+      <p className="mt-8 text-xs text-slate-400">© 2024 ResumeCraft AI. All rights reserved.</p>
     </div>
   );
 };

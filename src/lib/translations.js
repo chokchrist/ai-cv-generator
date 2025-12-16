@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    appTitle: "AI CV Gen",
+    appTitle: "ResumeCraft AI",
     tagline: "Craft your professional story.",
     loginToSave: "Login to Save",
     viewSaved: "View Saved CVs",
@@ -110,7 +110,7 @@ export const translations = {
     sectionLanguages: "Languages",
   },
   es: {
-    appTitle: "Generador CV IA",
+    appTitle: "ResumeCraft AI",
     tagline: "Crea tu historia profesional.",
     loginToSave: "Inicia y Guarda",
     viewSaved: "Ver CVs Guardados",
@@ -220,7 +220,7 @@ export const translations = {
     sectionLanguages: "Idiomas",
   },
   fr: {
-    appTitle: "Générateur CV IA",
+    appTitle: "ResumeCraft AI",
     tagline: "Façonnez votre histoire pro.",
     loginToSave: "Se connecter",
     viewSaved: "CVs Sauvegardés",
@@ -330,7 +330,7 @@ export const translations = {
     sectionLanguages: "Langues",
   },
   de: {
-    appTitle: "KI Lebenslauf",
+    appTitle: "ResumeCraft AI",
     tagline: "Gestalten Sie Ihre Karriere.",
     loginToSave: "Anmelden & Speichern",
     viewSaved: "Gespeicherte CVs",

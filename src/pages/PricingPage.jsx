@@ -8,7 +8,7 @@ const PricingPage = () => {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 p-6 flex flex-col items-center">
       <nav className="w-full max-w-6xl flex justify-between items-center mb-20">
         <h1 onClick={() => navigate('/')} className="text-2xl font-bold cursor-pointer bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-          AI CV Generator
+          ResumeCraft AI
         </h1>
         <button onClick={() => navigate('/editor')} className="font-semibold text-slate-600 hover:text-indigo-600">
           Back to Editor

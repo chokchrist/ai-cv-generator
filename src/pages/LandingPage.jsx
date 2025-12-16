@@ -10,7 +10,7 @@ const LandingPage = () => {
       {/* Navbar */}
       <nav className="flex justify-between items-center p-6 md:px-12 glass sticky top-0 z-50">
         <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-          AI CV Generator
+          ResumeCraft AI
         </h1>
         <div className="flex gap-4">
           <button onClick={() => navigate('/login')} className="font-semibold text-slate-600 hover:text-indigo-600">Login</button>
